@@ -1,0 +1,77 @@
+######create infra######
+client 
+web 
+db
+look Vagrantfile
+
+
+
+
+
+11111111111####################install ansible#############
+  501  vagrant init bento/centos-7.3
+  502  vagrant up
+  503  vagrant ssh
+  509  history
+
+[vagrant@localhost ~]$ history
+    1  sudo yum install epel-release
+    2  sudo yum -y install ansible
+    3  ansible --version
+    4  history
+## another methode of installing ansible in centos and ubuntu
+sudo easy_install pip
+pip install ansible
+
+
+
+22222222############accesss other machine########
+    4  sudo vi /etc/ansible/hosts
+		192.168.33.20	web
+		192.168.33.30	db
+    5  sudo vi /etc/hosts
+		[webserver]
+		web
+		[databases]
+		db
+    6  ssh-keygen
+    8  vi  /home/vagrant/.ssh/id_rsa.pub
+    9  ssh web
+   10  ssh db						[vagrant@db ~]$ 
+   								 1  vi .ssh/authorized_keys
+  								  2  sudo visudo   or vi /etc/sudoer.tmp
+									sudo ALL=(ALL) NOPASSWD:ALL
+								   3 id 
+11 ansible apache -a "bash —-version"
+ansible all -a "cat /etc/hosts"
+12  ansible-playbook -s /vagrant/application.yml
+ssh web
+
+
+							sudo systectl status httpd
+							cd /etc/yum.repos.d/    to check web=tatic and epel.repo
+
+
+^ shift6    start of line
+.* anything after that
+$ end of line 
+
+vim /etc/http/conf.modules.d/00-base.conf
+rewrite should be uncommented 
+
+
+
+
+
+57  ansible-playbook -s /vagrant/database.yml
+ ssh db							[vagrant@db ~11  mysql -u root -padmin
+   
+
+
+57  ansible-playbook -s /vagrant/database.yml
+SSH web
+						28  mysql -u dushyant_user -pdushyant_password -h 192.168.33.30
+						    mysql -u dushyant_user -pdushyant_password
+
+ssh web
+						29  vim /var/www/html/CodeIgniter-3.1.5/application/config/database.php
